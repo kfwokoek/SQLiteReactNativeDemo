@@ -6,11 +6,11 @@ export const useUserContext = () => useContext(UserContext);
 
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState({
-        name: 'index',
-        username: 'index',
-        age: 'index',
-        email: 'index',
-        join_date: new Date().toDateString(),
+        name: '',
+        username: '',
+        age: '',
+        email: '',
+        date: new Date(),
     });
 
     return (

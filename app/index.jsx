@@ -47,11 +47,14 @@ const index = () => {
 
             <View style={styles.row}>
                 <Text style={[styles.textMain, { marginLeft: 50 }]}>
-                    Join Date
+                    Date
                 </Text>
                 <Text style={[styles.textInfo, { marginRight: 50 }]}>
-                    {user.join_date}
+                    {user.date.toDateString()}
                 </Text>
+            </View>
+            <View style={{ position: 'absolute', bottom: 100 }}>
+                <Button text={'Settings'} link={'/settings'} width={150} height={60}/>
             </View>
         </SafeAreaView>
     )
