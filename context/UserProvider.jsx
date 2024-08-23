@@ -10,6 +10,7 @@ const UserProvider = ({ children }) => {
         username: 'index',
         age: 'index',
         email: 'index',
+        join_date: new Date().toDateString(),
     });
 
     return (
