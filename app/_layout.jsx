@@ -7,8 +7,7 @@ const RootLayout = () => {
     return (
         <UserProvider>
             <Stack>
-                <Stack.Screen name="index" options={{ headerShown : false, gestureEnabled: false }} />
-                <Stack.Screen name="settings" options={{ headerShown : false }} />
+                <Stack.Screen name="(notabs)" options={{ headerShown : false, gestureEnabled: false }} />
             </Stack>
         </UserProvider>
     )

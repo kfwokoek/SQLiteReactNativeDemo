@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity } from 'react-native'
-import { useUserContext } from '../context/UserProvider'
-import Button from '../components/Button'
+import { useUserContext } from '../../context/UserProvider'
+import Button from '../../components/Button'
 import { useState } from 'react'
 import RNDateTimePicker from '@react-native-community/datetimepicker'
 
@@ -71,7 +71,7 @@ const settings = () => {
                 </View>
             </View>
             <View style={{ position: 'absolute', bottom: 100 }}>
-                <Button text={'Settings'} link={'/settings'} width={150} height={60}/>
+                <Button text={'Save'} link={'/home'} width={150} height={60}/>
             </View>
         </SafeAreaView>
     )
