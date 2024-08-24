@@ -3,6 +3,8 @@ import Button from '../../components/Button'
 import { useUserContext } from '../../context/UserProvider'
 const home = () => {
     const {user} = useUserContext()
+    const isDateInvalid = (date) => isNaN(date.getTime());
+
     return (
         <SafeAreaView style={{ flexDirection: 'column', alignItems: 'center', backgroundColor: 'black', height:'100%' }}>
             <Text style={{ color: 'white', fontWeight: 'bold', fontSize:'56', marginBottom: 80 }}>
@@ -41,7 +43,7 @@ const home = () => {
                     Age
                 </Text>
                 <Text style={[styles.textInfo, { marginRight: 50 }]}>
-                    {user.age.length > 0 ? user.age : 'Age'}
+                    {user.age > 0 ? user.age : 'Age'}
                 </Text>
             </View>
 
@@ -50,7 +52,7 @@ const home = () => {
                     Date
                 </Text>
                 <Text style={[styles.textInfo, { marginRight: 50 }]}>
-                    {user.date.toDateString() > 0 ? user.date.toDateString() : 'Date'}
+                    {user.date.toDateString()}
 
                 </Text>
             </View>

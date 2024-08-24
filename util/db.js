@@ -15,17 +15,17 @@ export async function initDbSetup() {
 export async function submitChanges(username, name, email, age, date, setUser) {
     const db = await SQLite.openDatabaseAsync('userDb');
 
-    await db.runAsync('UPDATE user SET username = ?, name = ?, email = ?, age = ?, date = ?', [username, name, email, age, date.toDateString()]);
-
-    setUser({
-        username: username,
-        name: name,
-        email: email,
-        age: age,
-        date: date
-    });
-
+    await db.runAsync('UPDATE user SET username = ?, name = ?, email = ?, age = ?, date = ?', [username, name, email, age, date.toISOString()]);
     
     const firstRow = await db.getFirstAsync('SELECT * FROM user');
     console.log('thing', firstRow.id, firstRow.username, firstRow.name, firstRow.email, firstRow.age, firstRow.date);
+
+    setUser({
+        username: firstRow.username,
+        name: firstRow.name,
+        email: firstRow.email,
+        age: firstRow.age,
+        date: new Date(firstRow.date)
+    });
+
 }
