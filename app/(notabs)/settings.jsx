@@ -3,9 +3,10 @@ import { useUserContext } from '../../context/UserProvider'
 import Button from '../../components/Button'
 import { useState } from 'react'
 import RNDateTimePicker from '@react-native-community/datetimepicker'
+import { submitChanges } from '../../util/db'
 
 const settings = () => {
-    const {user} = useUserContext()
+    const {user, setUser} = useUserContext()
 
 
     const [tempData, setTempData] = useState({
@@ -34,7 +35,8 @@ const settings = () => {
                 <Text style={[styles.textMain, { marginLeft: 50 }]}>
                     Username
                 </Text>
-                <TextInput maxLength={8} placeholder={tempData.username.length > 0 ? tempData.username : 'Username'} placeholderTextColor={'white'} style={{ width: 150, height:55, borderWidth: 2, borderColor: 'white', borderRadius: 20, color: 'white', fontSize:'24', marginRight: 50, textAlign: 'center' }}/>
+                <TextInput maxLength={8} placeholder={tempData.username.length > 0 ? tempData.username : 'Username'} placeholderTextColor={'white'} style={{ width: 150, height:55, borderWidth: 2, borderColor: 'white', borderRadius: 20, color: 'white', fontSize:'24', marginRight: 50, textAlign: 'center' }}
+                    onChangeText={(value) => setTempData({...tempData, username: value})}/>
 
             </View>
 
@@ -42,7 +44,8 @@ const settings = () => {
                 <Text style={[styles.textMain, { marginLeft: 50 }]}>
                     Email
                 </Text>
-                <TextInput maxLength={8} placeholder={tempData.email.length > 0 ? tempData.email : 'Email'} placeholderTextColor={'white'} style={{ width: 150, height:55, borderWidth: 2, borderColor: 'white', borderRadius: 20, color: 'white', fontSize:'24', marginRight: 50, textAlign: 'center' }}/>
+                <TextInput maxLength={8} placeholder={tempData.email.length > 0 ? tempData.email : 'Email'} placeholderTextColor={'white'} style={{ width: 150, height:55, borderWidth: 2, borderColor: 'white', borderRadius: 20, color: 'white', fontSize:'24', marginRight: 50, textAlign: 'center' }}
+                    onChangeText={(value) => setTempData({...tempData, email: value})}/>
 
             </View>
 
@@ -50,7 +53,8 @@ const settings = () => {
                 <Text style={[styles.textMain, { marginLeft: 50 }]}>
                     Name
                 </Text>
-                <TextInput maxLength={8} placeholder={tempData.name.length > 0 ? tempData.name : 'Name'} placeholderTextColor={'white'} style={{ width: 150, height:55, borderWidth: 2, borderColor: 'white', borderRadius: 20, color: 'white', fontSize:'24', marginRight: 50, textAlign: 'center' }}/>
+                <TextInput maxLength={8} placeholder={tempData.name.length > 0 ? tempData.name : 'Name'} placeholderTextColor={'white'} style={{ width: 150, height:55, borderWidth: 2, borderColor: 'white', borderRadius: 20, color: 'white', fontSize:'24', marginRight: 50, textAlign: 'center' }}
+                    onChangeText={(value) => setTempData({...tempData, name: value})}/>
 
             </View>
 
@@ -58,7 +62,8 @@ const settings = () => {
                 <Text style={[styles.textMain, { marginLeft: 50 }]}>
                     Age
                 </Text>
-                <TextInput maxLength={8} keyboardType={'numeric'} placeholder={tempData.age.length > 0 ? tempData.age : 'Age'} placeholderTextColor={'white'} style={{ width: 150, height:55, borderWidth: 2, borderColor: 'white', borderRadius: 20, color: 'white', fontSize:'24', marginRight: 50, textAlign: 'center' }}/>
+                <TextInput maxLength={8} keyboardType={'numeric'} placeholder={tempData.age.length > 0 ? tempData.age : 'Age'} placeholderTextColor={'white'} style={{ width: 150, height:55, borderWidth: 2, borderColor: 'white', borderRadius: 20, color: 'white', fontSize:'24', marginRight: 50, textAlign: 'center' }}
+                    onChangeText={(value) => setTempData({...tempData, age: value})}/>
 
             </View>
 
@@ -71,7 +76,7 @@ const settings = () => {
                 </View>
             </View>
             <View style={{ position: 'absolute', bottom: 100 }}>
-                <Button text={'Save'} link={'/home'} width={150} height={60}/>
+                <Button text={'Save'} link={'/home'} width={150} height={60} functionCall={() => submitChanges(tempData.username, tempData.email, tempData.name, tempData.age, tempData.date, setUser)}/>
             </View>
         </SafeAreaView>
     )

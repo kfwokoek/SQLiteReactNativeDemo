@@ -14,7 +14,7 @@ const home = () => {
                     Username
                 </Text>
                 <Text style={[styles.textInfo, { marginRight: 50 }]}>
-                    {user.username}
+                    {user.username.length > 0 ? user.username : 'Username'}
                 </Text>
             </View>
 
@@ -23,7 +23,7 @@ const home = () => {
                     Email
                 </Text>
                 <Text style={[styles.textInfo, { marginRight: 50 }]}>
-                    {user.email}
+                    {user.email.length > 0 ? user.email : 'Email'}
                 </Text>
             </View>
 
@@ -32,7 +32,7 @@ const home = () => {
                     Name
                 </Text>
                 <Text style={[styles.textInfo, { marginRight: 50 }]}>
-                    {user.name}
+                    {user.name.length > 0 ? user.name : 'Name'}
                 </Text>
             </View>
 
@@ -41,7 +41,7 @@ const home = () => {
                     Age
                 </Text>
                 <Text style={[styles.textInfo, { marginRight: 50 }]}>
-                    {user.age}
+                    {user.age.length > 0 ? user.age : 'Age'}
                 </Text>
             </View>
 
@@ -50,7 +50,8 @@ const home = () => {
                     Date
                 </Text>
                 <Text style={[styles.textInfo, { marginRight: 50 }]}>
-                    {user.date.toDateString()}
+                    {user.date.toDateString() > 0 ? user.date.toDateString() : 'Date'}
+
                 </Text>
             </View>
             <View style={{ position: 'absolute', bottom: 100 }}>
