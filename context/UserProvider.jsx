@@ -8,7 +8,7 @@ const UserProvider = ({ children }) => {
     const [user, setUser] = useState({
         name: '',
         username: '',
-        age: '',
+        age: -1,
         email: '',
         date: new Date(),
     });

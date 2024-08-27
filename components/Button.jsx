@@ -3,7 +3,7 @@ import { useRouter } from 'expo-router';
 import * as Haptics from 'expo-haptics';
 
 
-const Button = ({ text, link, width, height, functionCall }) => {
+const Button = ({ method, text, link, width, height, functionCall }) => {
     
 
     const router = useRouter();
@@ -13,7 +13,12 @@ const Button = ({ text, link, width, height, functionCall }) => {
             functionCall()
         }
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-        router.push(link);
+        if (method === 'back') {
+            router.back();
+        }
+        else {
+            router.push(link);
+        }
     }
 
     

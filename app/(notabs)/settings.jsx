@@ -17,7 +17,6 @@ const settings = () => {
         date: user.date
     })
 
-    const [datePickerOpen, setDatePickerOpen] = useState(false)
 
     const handleDateChange = (event, selectedDate) => {
         setTempData({...tempData, date: selectedDate})
@@ -62,7 +61,7 @@ const settings = () => {
                 <Text style={[styles.textMain, { marginLeft: 50 }]}>
                     Age
                 </Text>
-                <TextInput maxLength={8} keyboardType={'numeric'} placeholder={tempData.age.length > 0 ? tempData.age : 'Age'} placeholderTextColor={'white'} style={{ width: 150, height:55, borderWidth: 2, borderColor: 'white', borderRadius: 20, color: 'white', fontSize:'24', marginRight: 50, textAlign: 'center' }}
+                <TextInput maxLength={8} keyboardType={'numeric'} placeholder={tempData.age > 0 ? tempData.age.toString() : 'Age'} placeholderTextColor={'white'} style={{ width: 150, height:55, borderWidth: 2, borderColor: 'white', borderRadius: 20, color: 'white', fontSize:'24', marginRight: 50, textAlign: 'center' }}
                     onChangeText={(value) => setTempData({...tempData, age: value})}/>
 
             </View>
@@ -76,7 +75,7 @@ const settings = () => {
                 </View>
             </View>
             <View style={{ position: 'absolute', bottom: 100 }}>
-                <Button text={'Save'} link={'/home'} width={150} height={60} functionCall={() => submitChanges(tempData.username, tempData.email, tempData.name, tempData.age, tempData.date, setUser)}/>
+                <Button method={'back'} text={'Save'} link={'/home'} width={150} height={60} functionCall={() => submitChanges(tempData.username, tempData.email, tempData.name, tempData.age, tempData.date, setUser)}/>
             </View>
         </SafeAreaView>
     )
